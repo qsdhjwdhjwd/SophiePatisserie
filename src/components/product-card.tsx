@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { useCart } from "@/lib/cart";
 import { type Product, formatPrice } from "@/lib/products";
-import { Button } from "@/components/ui/button";
-import { ShoppingBag, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function ProductCard({ product }: { product: Product }) {
   const addItem = useCart((s) => s.addItem);
@@ -60,31 +59,21 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
 
-        {product.type === "standard" && (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-cream-200">
-              In den Warenkorb
-            </span>
-          </div>
-        )}
-
-        {product.type === "inquiry" && (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-cream-200">
-              Anfragen
-            </span>
-          </div>
-        )}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-burgundy-900/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-active:opacity-100">
+          <span className="border border-cream-200/60 px-5 py-2 text-[9px] tracking-[0.35em] uppercase text-cream-200">
+            {product.type === "inquiry" ? "Anfragen" : "Entdecken"}
+          </span>
+        </div>
       </div>
 
       {/* Product info */}
-      <h3 className="mt-4 font-serif text-lg text-burgundy-700 sm:mt-5 sm:text-xl lg:text-2xl">
+      <h3 className="mt-5 font-serif text-lg tracking-wide text-burgundy-700 sm:mt-6 sm:text-xl lg:text-2xl">
         {product.name}
       </h3>
-      <p className="mt-1 text-sm leading-relaxed text-burgundy-400 sm:mt-1.5">
+      <p className="mt-1.5 text-sm leading-relaxed text-burgundy-400 sm:mt-2">
         {product.tagline}
       </p>
-      <p className="mt-2 text-xs leading-relaxed text-burgundy-300 sm:mt-3">
+      <p className="mt-2.5 text-xs leading-relaxed text-burgundy-300/80 sm:mt-3">
         {product.description}
       </p>
 
@@ -107,15 +96,15 @@ export function ProductCard({ product }: { product: Product }) {
           <>
             {/* Size options */}
             {product.sizes && product.sizes.length > 1 && mounted && (
-              <div className="mb-3 flex flex-wrap gap-1.5 sm:mb-4 sm:gap-2">
+              <div className="mb-4 flex flex-wrap gap-2 sm:mb-5">
                 {product.sizes.map((size) => (
                   <button
                     key={size.id}
                     onClick={() => setSelectedSize(size)}
-                    className={`min-h-[40px] px-3 py-2 text-[11px] tracking-wider uppercase border transition-all duration-300 sm:min-h-0 sm:py-1.5 ${
+                    className={`min-h-[40px] px-4 py-2 text-[10px] tracking-[0.2em] uppercase border transition-all duration-500 sm:min-h-0 sm:py-1.5 ${
                       selectedSize?.id === size.id
-                        ? "border-burgundy-500 bg-burgundy-500 text-cream-200"
-                        : "border-cream-300 text-burgundy-600 hover:border-burgundy-300 active:border-burgundy-300"
+                        ? "border-burgundy-700 text-burgundy-700"
+                        : "border-cream-300 text-burgundy-400 hover:border-burgundy-300 active:border-burgundy-300"
                     }`}
                   >
                     {size.label}
@@ -125,14 +114,16 @@ export function ProductCard({ product }: { product: Product }) {
             )}
 
             <div className="flex items-center justify-between gap-3">
-              <span className="font-serif text-lg text-burgundy-700">
+              <span className="font-serif text-lg tracking-wide text-burgundy-700">
                 {currentPrice !== null ? formatPrice(currentPrice) : ""}
               </span>
               {mounted && (
-                <Button size="sm" onClick={handleAdd} className="h-10 gap-2 sm:h-9">
-                  <ShoppingBag className="size-3.5" />
-                  {added ? "Hinzugefügt \u2713" : "Hinzufügen"}
-                </Button>
+                <button
+                  onClick={handleAdd}
+                  className="h-10 border border-burgundy-700 px-5 text-[10px] tracking-[0.2em] uppercase text-burgundy-700 transition-all duration-500 hover:bg-burgundy-700 hover:text-cream-200 active:bg-burgundy-700 active:text-cream-200 sm:h-9"
+                >
+                  {added ? "Hinzugefügt" : "Hinzufügen"}
+                </button>
               )}
             </div>
           </>

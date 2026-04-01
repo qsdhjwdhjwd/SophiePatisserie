@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
-import { Button } from "@/components/ui/button";
 import { X, Plus, Minus, Trash2 } from "lucide-react";
 import Link from "next/link";
 
@@ -74,7 +73,7 @@ export function CartDrawer({ open, onClose }: Props) {
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-[60] bg-burgundy-900/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] bg-burgundy-900/40 backdrop-blur-sm transition-opacity duration-700 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
@@ -88,7 +87,7 @@ export function CartDrawer({ open, onClose }: Props) {
         aria-modal="true"
         aria-label="Warenkorb"
         onKeyDown={handleKeyDown}
-        className={`fixed right-0 top-0 z-[70] flex h-full w-full flex-col bg-cream-50 shadow-2xl transition-transform duration-500 ease-out sm:max-w-md ${
+        className={`fixed right-0 top-0 z-[70] flex h-full w-full flex-col border-l border-cream-300/40 bg-cream-50 shadow-[0_0_60px_rgba(46,16,14,0.08)] transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] sm:max-w-md ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -195,7 +194,7 @@ export function CartDrawer({ open, onClose }: Props) {
             <Link
               href="/checkout"
               onClick={onClose}
-              className="flex h-12 w-full items-center justify-center rounded-lg bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80 active:bg-primary/80 sm:h-11"
+              className="flex h-12 w-full items-center justify-center border border-burgundy-700 text-[11px] tracking-[0.25em] uppercase text-burgundy-700 transition-all duration-500 hover:bg-burgundy-700 hover:text-cream-200 active:bg-burgundy-700 active:text-cream-200 sm:h-11"
             >
               Zur Kasse
             </Link>

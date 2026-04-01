@@ -7,6 +7,7 @@ import { ParallaxSection } from "@/components/parallax-section";
 import { SectionDivider } from "@/components/section-divider";
 import { ProductCard } from "@/components/product-card";
 import { PRODUCTS } from "@/lib/products";
+import { ContactForm } from "@/components/contact-form";
 import { Truck } from "lucide-react";
 
 /* ────────────────────── Data ────────────────────── */
@@ -114,7 +115,7 @@ const INGREDIENTS = [
 
 function SectionTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-burgundy-300">
+    <span className="text-[10px] font-light tracking-[0.35em] uppercase text-burgundy-400/60">
       {children}
     </span>
   );
@@ -200,13 +201,13 @@ export default function Home() {
         </section>
 
         {/* ── Intro Statement ── */}
-        <section className="bg-cream-50 px-4 py-20 sm:px-6 sm:py-28 lg:py-44">
+        <section className="bg-cream-50 px-4 py-24 sm:px-6 sm:py-32 lg:py-48">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <TextReveal
                 text="Wo slawische Backtradition auf Frankfurter Anspruch trifft."
                 as="p"
-                className="font-serif text-xl leading-relaxed text-burgundy-800 sm:text-2xl md:text-3xl lg:text-4xl lg:leading-snug"
+                className="font-serif text-xl leading-relaxed text-burgundy-800 sm:text-2xl md:text-3xl lg:text-[2.75rem] lg:leading-snug"
               />
             </ScrollReveal>
           </div>
@@ -215,7 +216,7 @@ export default function Home() {
         {/* ── Marquee ── */}
         <Marquee
           items={MARQUEE_ITEMS}
-          className="border-y border-cream-300/40 py-4 text-[10px] tracking-[0.3em] uppercase text-burgundy-300 sm:py-5 sm:text-[11px]"
+          className="border-y border-cream-300/30 py-5 text-[10px] tracking-[0.35em] uppercase text-burgundy-300/70 sm:py-6 sm:text-[11px]"
           speed="slow"
         />
 
@@ -232,23 +233,23 @@ export default function Home() {
         {/* ── Spezialitäten ── */}
         <section
           id="spezialitaeten"
-          className="scroll-mt-20 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
+          className="scroll-mt-20 bg-white px-4 py-24 sm:px-6 sm:py-32 lg:py-44"
         >
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <div className="text-center">
                 <SectionTag>Online bestellen</SectionTag>
-                <h2 className="mt-3 font-serif text-3xl text-burgundy-800 sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-serif text-3xl tracking-wide text-burgundy-800 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
                   Spezialitäten
                 </h2>
-                <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-burgundy-400 sm:mt-6">
+                <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-burgundy-400/80 sm:mt-7">
                   Handgefertigt mit Bio-Zutaten. Direkt bestellen oder
                   individuelle Torten auf Anfrage — auch mit Stevia.
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="mt-10 grid gap-x-6 gap-y-10 sm:mt-16 sm:grid-cols-2 sm:gap-y-14 lg:mt-24 lg:grid-cols-3 lg:gap-x-12">
+            <div className="mt-12 grid gap-x-8 gap-y-12 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mt-28 lg:grid-cols-3 lg:gap-x-14">
               {PRODUCTS.map((product, i) => (
                 <ScrollReveal key={product.id} delay={i * 80}>
                   <ProductCard product={product} />
@@ -263,9 +264,9 @@ export default function Home() {
         {/* ── Über Sophie ── */}
         <section
           id="ueber"
-          className="scroll-mt-20 bg-cream-50 px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
+          className="scroll-mt-20 bg-cream-50 px-4 py-24 sm:px-6 sm:py-32 lg:py-44"
         >
-          <div className="mx-auto grid max-w-6xl items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 sm:gap-16 lg:grid-cols-2 lg:gap-24">
             <ScrollReveal>
               <ParallaxSection speed={0.08}>
                 <PlaceholderFrame aspectRatio="3/4" label="Portrait" />
@@ -275,10 +276,10 @@ export default function Home() {
             <ScrollReveal delay={200}>
               <div>
                 <SectionTag>Die Gründerin</SectionTag>
-                <h2 className="mt-3 font-serif text-3xl text-burgundy-800 sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-serif text-3xl tracking-wide text-burgundy-800 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
                   Sophie
                 </h2>
-                <div className="mt-6 space-y-4 text-sm leading-relaxed text-burgundy-600 sm:mt-8 sm:space-y-5 sm:text-base sm:leading-relaxed">
+                <div className="mt-7 space-y-5 text-sm leading-relaxed text-burgundy-600 sm:mt-10 sm:space-y-6 sm:text-base sm:leading-relaxed">
                   <p>
                     Großmutters Küche in Osteuropa. Dann Frankfurt. Sophie
                     bäckt seit sie denken kann — erst für die Familie, jetzt
@@ -300,25 +301,25 @@ export default function Home() {
         {/* ── Zutaten ── */}
         <section
           id="zutaten"
-          className="grain scroll-mt-20 bg-forest-600 px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
+          className="grain scroll-mt-20 bg-forest-600 px-4 py-24 sm:px-6 sm:py-32 lg:py-44"
         >
           <div className="mx-auto max-w-5xl">
             <ScrollReveal>
               <div className="text-center">
-                <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-cream-200/50">
+                <span className="text-[10px] font-light tracking-[0.35em] uppercase text-cream-200/40">
                   Unsere Zutaten
                 </span>
-                <h2 className="mt-3 font-serif text-3xl text-cream-200 sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-serif text-3xl tracking-wide text-cream-200 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
                   Weniger. Dafür besser.
                 </h2>
-                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-cream-200/60 sm:mt-6">
+                <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-cream-200/55 sm:mt-7">
                   Sechs Zutaten, die man schmeckt. Keine Zusätze, die man nicht
                   braucht.
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="mt-12 grid grid-cols-2 gap-3 sm:mt-16 sm:grid-cols-3 sm:gap-5 lg:mt-20 lg:gap-6">
+            <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:grid-cols-3 sm:gap-6 lg:mt-24 lg:gap-8">
               {INGREDIENTS.map((item, i) => (
                 <ScrollReveal key={item.name} delay={i * 100}>
                   <div className="flex flex-col items-center rounded-lg border border-cream-200/10 bg-cream-200/5 px-4 py-6 text-center backdrop-blur-sm sm:px-6 sm:py-8">
@@ -352,21 +353,21 @@ export default function Home() {
         {/* ── Philosophie ── */}
         <section
           id="philosophie"
-          className="grain scroll-mt-20 bg-burgundy-500 px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
+          className="grain scroll-mt-20 bg-burgundy-500 px-4 py-24 sm:px-6 sm:py-32 lg:py-44"
         >
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <div className="text-center">
-                <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-cream-200/55">
+                <span className="text-[10px] font-light tracking-[0.35em] uppercase text-cream-200/40">
                   Was uns antreibt
                 </span>
-                <h2 className="mt-3 font-serif text-3xl text-cream-200 sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-serif text-3xl tracking-wide text-cream-200 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
                   Philosophie
                 </h2>
               </div>
             </ScrollReveal>
 
-            <div className="mt-12 grid gap-10 sm:mt-16 sm:grid-cols-3 sm:gap-12 lg:mt-24 lg:gap-16">
+            <div className="mt-14 grid gap-12 sm:mt-20 sm:grid-cols-3 sm:gap-14 lg:mt-28 lg:gap-20">
               {PHILOSOPHY.map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 150}>
                   <div className="text-center">
@@ -387,41 +388,41 @@ export default function Home() {
         <SectionDivider variant="dark" />
 
         {/* ── Lieferung ── */}
-        <section className="bg-cream-50 px-4 py-16 sm:px-6 sm:py-20 md:py-28">
+        <section className="bg-cream-50 px-4 py-20 sm:px-6 sm:py-28 md:py-36">
           <div className="mx-auto max-w-3xl">
             <ScrollReveal>
               <div className="text-center">
                 <SectionTag>Lieferung</SectionTag>
-                <h2 className="mt-3 font-serif text-2xl text-burgundy-800 sm:mt-4 sm:text-3xl md:text-4xl">
+                <h2 className="mt-4 font-serif text-2xl tracking-wide text-burgundy-800 sm:mt-5 sm:text-3xl md:text-4xl">
                   Direkt zu Ihnen
                 </h2>
-                <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-burgundy-400 sm:mt-6">
+                <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-burgundy-400/80 sm:mt-7">
                   Wir liefern Ihre Bestellung frisch und sorgfältig verpackt.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
-                <div className="border border-cream-300 bg-white p-6 text-center sm:p-8">
-                  <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-forest-600">
+              <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-6">
+                <div className="border border-cream-300/60 bg-white p-7 text-center sm:p-10">
+                  <p className="text-[10px] font-light tracking-[0.3em] uppercase text-forest-600">
                     Frankfurt am Main
                   </p>
-                  <p className="mt-2 font-serif text-xl text-burgundy-700 sm:mt-3 sm:text-2xl">
+                  <p className="mt-3 font-serif text-xl tracking-wide text-burgundy-700 sm:mt-4 sm:text-2xl">
                     Kostenlos ab 59 €
                   </p>
-                  <p className="mt-1.5 text-xs text-burgundy-400 sm:mt-2">
+                  <p className="mt-2 text-xs text-burgundy-400/70 sm:mt-3">
                     Lieferung am selben oder nächsten Tag
                   </p>
                 </div>
-                <div className="border border-cream-300 bg-white p-6 text-center sm:p-8">
-                  <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-forest-600">
+                <div className="border border-cream-300/60 bg-white p-7 text-center sm:p-10">
+                  <p className="text-[10px] font-light tracking-[0.3em] uppercase text-forest-600">
                     Taunus & Umland
                   </p>
-                  <p className="mt-2 font-serif text-xl text-burgundy-700 sm:mt-3 sm:text-2xl">
+                  <p className="mt-3 font-serif text-xl tracking-wide text-burgundy-700 sm:mt-4 sm:text-2xl">
                     Kostenlos ab 89 €
                   </p>
-                  <p className="mt-1.5 text-xs text-burgundy-400 sm:mt-2">
+                  <p className="mt-2 text-xs text-burgundy-400/70 sm:mt-3">
                     Bad Homburg · Kronberg · Königstein · Oberursel
                   </p>
                 </div>
@@ -435,22 +436,22 @@ export default function Home() {
         {/* ── Kontakt ── */}
         <section
           id="kontakt"
-          className="scroll-mt-20 bg-white px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
+          className="scroll-mt-20 bg-white px-4 py-24 sm:px-6 sm:py-32 lg:py-44"
         >
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <div className="text-center">
                 <SectionTag>Kontakt</SectionTag>
-                <h2 className="mt-3 font-serif text-3xl text-burgundy-800 sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-serif text-3xl tracking-wide text-burgundy-800 sm:mt-5 sm:text-4xl md:text-5xl lg:text-6xl">
                   Schreiben Sie uns
                 </h2>
               </div>
             </ScrollReveal>
 
-            <div className="mt-10 grid gap-10 sm:mt-16 sm:grid-cols-2 sm:gap-12 lg:mt-24">
+            <div className="mt-12 grid gap-12 sm:mt-20 sm:grid-cols-2 sm:gap-14 lg:mt-28">
               <ScrollReveal>
                 <div>
-                  <h3 className="font-serif text-lg text-burgundy-700 sm:text-xl">
+                  <h3 className="font-serif text-lg tracking-wide text-burgundy-700 sm:text-xl">
                     Standort
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-burgundy-600 sm:mt-4">
@@ -459,10 +460,10 @@ export default function Home() {
                     Frankfurt am Main
                   </p>
 
-                  <h3 className="mt-8 font-serif text-lg text-burgundy-700 sm:mt-10 sm:text-xl">
+                  <h3 className="mt-10 font-serif text-lg tracking-wide text-burgundy-700 sm:mt-12 sm:text-xl">
                     Öffnungszeiten
                   </h3>
-                  <div className="mt-3 space-y-2 text-sm text-burgundy-600 sm:mt-4">
+                  <div className="mt-3 space-y-2.5 text-sm text-burgundy-600 sm:mt-4">
                     <div className="flex max-w-xs justify-between gap-4">
                       <span>Dienstag — Freitag</span>
                       <span>09:00 — 18:00</span>
@@ -476,39 +477,41 @@ export default function Home() {
                       <span className="text-burgundy-300">Geschlossen</span>
                     </div>
                   </div>
-                </div>
-              </ScrollReveal>
 
-              <ScrollReveal delay={150}>
-                <div>
-                  <h3 className="font-serif text-lg text-burgundy-700 sm:text-xl">
-                    Anfragen & Bestellungen
+                  <h3 className="mt-10 font-serif text-lg tracking-wide text-burgundy-700 sm:mt-12 sm:text-xl">
+                    Direkt erreichen
                   </h3>
-                  <div className="mt-3 space-y-4 text-sm text-burgundy-600 sm:mt-4">
+                  <div className="mt-3 space-y-3 text-sm text-burgundy-600 sm:mt-4">
                     <p>
-                      <span className="text-[11px] tracking-[0.15em] uppercase text-burgundy-300">
+                      <span className="text-[10px] font-light tracking-[0.2em] uppercase text-burgundy-300">
                         E-Mail
                       </span>
                       <br />
                       info@sofiepatisserie.com
                     </p>
                     <p>
-                      <span className="text-[11px] tracking-[0.15em] uppercase text-burgundy-300">
+                      <span className="text-[10px] font-light tracking-[0.2em] uppercase text-burgundy-300">
                         Instagram
                       </span>
                       <br />
                       @sofiepatisserie
                     </p>
                   </div>
+                </div>
+              </ScrollReveal>
 
-                  <h3 className="mt-8 font-serif text-lg text-burgundy-700 sm:mt-10 sm:text-xl">
-                    Individuelle Torten
+              <ScrollReveal delay={150}>
+                <div>
+                  <h3 className="font-serif text-lg tracking-wide text-burgundy-700 sm:text-xl">
+                    Anfrage senden
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-burgundy-600 sm:mt-4">
-                    Festtagstorten werden individuell nach Ihren Wünschen
-                    gefertigt. Schreiben Sie uns per E-Mail oder Instagram —
-                    mindestens 5 Tage im Voraus.
+                  <p className="mt-2 text-xs leading-relaxed text-burgundy-400/70 sm:mt-3">
+                    Festtagstorten, individuelle Bestellungen oder Fragen — wir
+                    freuen uns auf Ihre Nachricht.
                   </p>
+                  <div className="mt-6 sm:mt-8">
+                    <ContactForm />
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -517,9 +520,9 @@ export default function Home() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-burgundy-900 px-4 py-12 sm:px-6 sm:py-16">
+      <footer className="bg-burgundy-900 px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-center gap-6 sm:gap-8">
+          <div className="flex flex-col items-center gap-8 sm:gap-10">
             <Image
               src="/images/logo.jpg"
               alt="Sofié Patisserie"
@@ -528,7 +531,7 @@ export default function Home() {
               className="rounded-sm opacity-80"
             />
 
-            <ul className="flex flex-wrap justify-center gap-5 text-[10px] tracking-[0.25em] uppercase text-cream-200/50 sm:gap-8">
+            <ul className="flex flex-wrap justify-center gap-6 text-[10px] font-light tracking-[0.3em] uppercase text-cream-200/40 sm:gap-8">
               <li>
                 <a
                   href="#spezialitaeten"

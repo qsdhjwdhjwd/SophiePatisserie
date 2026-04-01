@@ -32,9 +32,9 @@ export function Navbar() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
         <nav
-          className={`mx-auto flex max-w-6xl items-center justify-between transition-all duration-700 ease-out ${
+          className={`mx-auto flex max-w-6xl items-center justify-between transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
             scrolled
-              ? "rounded-full border border-cream-300/60 bg-cream-50/90 px-4 py-2.5 shadow-[0_8px_32px_rgba(46,16,14,0.08)] backdrop-blur-xl sm:px-6 sm:py-3"
+              ? "rounded-full border border-cream-300/40 bg-cream-50/85 px-4 py-2.5 shadow-[0_4px_24px_rgba(46,16,14,0.05)] backdrop-blur-xl sm:px-6 sm:py-3"
               : "px-3 py-3 sm:px-6 sm:py-4"
           }`}
         >
@@ -50,15 +50,15 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <ul
-            className={`hidden items-center gap-8 text-[10px] font-medium tracking-[0.25em] uppercase transition-colors duration-500 md:flex lg:gap-10 ${
-              scrolled ? "text-burgundy-700" : "text-cream-200/80"
+            className={`hidden items-center gap-8 text-[10px] font-light tracking-[0.3em] uppercase transition-colors duration-700 md:flex lg:gap-10 ${
+              scrolled ? "text-burgundy-600" : "text-cream-200/70"
             }`}
           >
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="py-2 transition-opacity duration-300 hover:opacity-60 active:opacity-60"
+                  className="py-2 transition-opacity duration-500 hover:opacity-50 active:opacity-50"
                 >
                   {link.label}
                 </a>
@@ -80,7 +80,7 @@ export function Navbar() {
             >
               <ShoppingBag className="size-[18px] sm:size-5" />
               {itemCount > 0 && (
-                <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-champagne text-[9px] font-bold text-burgundy-900">
+                <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center bg-champagne text-[8px] font-light tracking-wider text-burgundy-900">
                   {itemCount}
                 </span>
               )}

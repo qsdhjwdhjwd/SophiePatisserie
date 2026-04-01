@@ -122,12 +122,12 @@
 /* ── Animations ── */
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(32px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-up {
-  animation: fade-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-up 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @keyframes marquee {
@@ -205,17 +205,17 @@
 /* ── Product Card Hover / Active ── */
 
 .product-card-image {
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .group:hover .product-card-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Mobile: active state for touch feedback */
 @media (pointer: coarse) {
   .group:active .product-card-image {
-    transform: scale(1.03);
+    transform: scale(1.01);
   }
 }
 
