@@ -19,12 +19,19 @@ export function Marquee({
       className={`overflow-hidden whitespace-nowrap ${className}`}
       aria-hidden="true"
     >
-      <div
-        className="inline-block animate-marquee"
-        style={{ animationDuration: speedMap[speed] }}
-      >
-        <span>{content}</span>
-        <span>{content}</span>
+      <div className="inline-flex">
+        <span
+          className="animate-marquee inline-block"
+          style={{ animationDuration: speedMap[speed] }}
+        >
+          {content}
+        </span>
+        <span
+          className="animate-marquee inline-block"
+          style={{ animationDuration: speedMap[speed] }}
+        >
+          {content}
+        </span>
       </div>
     </div>
   );
