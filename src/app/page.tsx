@@ -1,6 +1,41 @@
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TextReveal } from "@/components/text-reveal";
+import { Marquee } from "@/components/marquee";
+import { ParallaxSection } from "@/components/parallax-section";
+import { SectionDivider } from "@/components/section-divider";
+import { ProductCard } from "@/components/product-card";
+import { PRODUCTS } from "@/lib/products";
+import { Truck } from "lucide-react";
+
+/* ────────────────────── Data ────────────────────── */
+
+const PHILOSOPHY = [
+  {
+    title: "Tradition",
+    text: "Rezepte aus Moskau, Kiew und Warschau — weitergegeben über Generationen, perfektioniert in Frankfurt.",
+  },
+  {
+    title: "Handwerk",
+    text: "Keine Shortcuts. Jede Schicht von Hand, jede Creme frisch angesetzt, jedes Detail bewusst.",
+  },
+  {
+    title: "Frankfurt",
+    text: "Von der Skyline bis zum Taunus — Sofié bringt osteuropäische Patisserie-Kunst dorthin, wo sie gefehlt hat.",
+  },
+];
+
+const MARQUEE_ITEMS = [
+  "Patisserie",
+  "Handwerk",
+  "Tradition",
+  "Frankfurt",
+  "Osteuropa",
+  "Sirniki",
+  "Medovik",
+  "Napoleonka",
+];
 
 /* ────────────────────── Helpers ────────────────────── */
 
@@ -9,23 +44,6 @@ function SectionTag({ children }: { children: React.ReactNode }) {
     <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-burgundy-300">
       {children}
     </span>
-  );
-}
-
-function Ornament({ variant = "champagne" }: { variant?: "champagne" | "forest" | "cream" }) {
-  const colors = {
-    champagne: { line: "bg-champagne/40", diamond: "border-champagne/40" },
-    forest: { line: "bg-forest-400/30", diamond: "border-forest-400/30" },
-    cream: { line: "bg-cream-200/30", diamond: "border-cream-200/30" },
-  };
-  const c = colors[variant];
-
-  return (
-    <div className="flex items-center justify-center gap-4">
-      <div className={`h-px w-12 ${c.line}`} />
-      <div className={`size-1.5 rotate-45 border ${c.diamond}`} />
-      <div className={`h-px w-12 ${c.line}`} />
-    </div>
   );
 }
 
@@ -64,52 +82,6 @@ function PlaceholderFrame({
   );
 }
 
-/* ────────────────────── Data ────────────────────── */
-
-const SPECIALTIES = [
-  {
-    name: "Festtagstorten",
-    description:
-      "Individuell gestaltete Torten für Ihre besonderen Momente",
-  },
-  {
-    name: "Sirniki",
-    description:
-      "Goldene Quarkpfannkuchen nach osteuropäischer Familientradition",
-  },
-  {
-    name: "Medovik",
-    description: "Vielschichtiger Honigkuchen mit zarter Sahnecreme",
-  },
-  {
-    name: "Napoleonka",
-    description: "Knusprige Blätterteigschnitten mit Vanillecreme",
-  },
-  {
-    name: "Ptichye Moloko",
-    description: "Luftiges Soufflé unter feiner Schokoladenglasur",
-  },
-  {
-    name: "Prjaniki",
-    description: "Gewürzkuchen mit Zuckerguss nach alter Tradition",
-  },
-];
-
-const PHILOSOPHY = [
-  {
-    title: "Tradition",
-    text: "Rezepte, die über Generationen weitergegeben wurden. Jede Kreation trägt das Erbe osteuropäischer Backstuben in sich.",
-  },
-  {
-    title: "Handwerk",
-    text: "Ohne Kompromisse. Jede Torte wird von Hand gefertigt, mit ausgewählten Zutaten und der Sorgfalt, die nur echte Handarbeit bietet.",
-  },
-  {
-    title: "Frankfurt",
-    text: "Verwurzelt in der Stadt, die wir lieben. Sofié ist Frankfurts Brücke zu den Aromen Osteuropas.",
-  },
-];
-
 /* ────────────────────── Page ────────────────────── */
 
 export default function Home() {
@@ -119,33 +91,33 @@ export default function Home() {
 
       <main>
         {/* ── Hero ── */}
-        <section className="relative flex h-screen flex-col items-center justify-center bg-burgundy-500">
+        <section className="grain relative flex h-screen flex-col items-center justify-center bg-burgundy-500">
           <div className="flex flex-col items-center">
-            <h1
-              className="animate-fade-up font-serif text-7xl italic text-cream-200 sm:text-8xl lg:text-9xl xl:text-[11rem] tracking-wide"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Sofié
-            </h1>
+            <TextReveal
+              text="Sofié"
+              as="h1"
+              splitBy="letter"
+              className="font-serif text-7xl italic tracking-wide text-cream-200 sm:text-8xl lg:text-9xl xl:text-[11rem]"
+            />
             <p
               className="animate-fade-up mt-5 text-[10px] tracking-[0.45em] uppercase text-cream-200/50 sm:text-xs"
-              style={{ animationDelay: "0.6s" }}
+              style={{ animationDelay: "0.8s" }}
             >
               Patisserie Frankfurt
             </p>
           </div>
 
           <p
-            className="animate-fade-up mt-20 max-w-sm px-6 text-center text-sm leading-relaxed tracking-wide text-cream-200/35"
-            style={{ animationDelay: "1s" }}
+            className="animate-fade-up mt-20 max-w-md px-6 text-center text-sm leading-relaxed tracking-wide text-cream-200/30"
+            style={{ animationDelay: "1.2s" }}
           >
-            Handgefertigte Patisserie mit osteuropäischer Seele
+            Osteuropäische Patisserie-Kunst. Handgefertigt in Frankfurt.
           </p>
 
           {/* Scroll indicator */}
           <div
             className="animate-fade-up absolute bottom-12 flex flex-col items-center gap-3"
-            style={{ animationDelay: "1.4s" }}
+            style={{ animationDelay: "1.6s" }}
           >
             <span className="text-[9px] tracking-[0.35em] uppercase text-cream-200/25">
               Scroll
@@ -158,22 +130,33 @@ export default function Home() {
         <section className="bg-cream-50 px-6 py-28 sm:py-36 lg:py-44">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <Ornament />
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <p className="mt-10 font-serif text-2xl leading-relaxed text-burgundy-800 sm:text-3xl lg:text-4xl lg:leading-snug">
-                Wo osteuropäische Backtradition
-                <br className="hidden sm:block" /> auf Frankfurter Finesse
-                trifft.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={400}>
-              <div className="mt-10">
-                <Ornament />
-              </div>
+              <TextReveal
+                text="Wo slawische Backtradition auf Frankfurter Anspruch trifft."
+                as="p"
+                className="font-serif text-2xl leading-relaxed text-burgundy-800 sm:text-3xl lg:text-4xl lg:leading-snug"
+              />
             </ScrollReveal>
           </div>
         </section>
+
+        {/* ── Marquee ── */}
+        <Marquee
+          items={MARQUEE_ITEMS}
+          className="border-y border-cream-300/40 py-5 text-[11px] tracking-[0.3em] uppercase text-burgundy-300/60"
+          speed="slow"
+        />
+
+        {/* ── Delivery Banner ── */}
+        <section className="bg-forest-600 px-6 py-4">
+          <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 text-center">
+            <Truck className="size-4 text-cream-200/70" />
+            <p className="text-[11px] tracking-[0.2em] uppercase text-cream-200/80">
+              Kostenlose Lieferung in Frankfurt & Taunus ab 59 €
+            </p>
+          </div>
+        </section>
+
+        <SectionDivider />
 
         {/* ── Spezialitäten ── */}
         <section
@@ -183,36 +166,29 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <div className="text-center">
-                <SectionTag>Unsere Kreationen</SectionTag>
+                <SectionTag>Online bestellen</SectionTag>
                 <h2 className="mt-4 font-serif text-4xl text-burgundy-800 sm:text-5xl lg:text-6xl">
                   Spezialitäten
                 </h2>
                 <p className="mx-auto mt-6 max-w-lg text-sm leading-relaxed text-burgundy-400">
-                  Jede Kreation erzählt eine Geschichte — von den Küchen
-                  Osteuropas bis in das Herz Frankfurts.
+                  Von den Küchen Osteuropas bis nach Frankfurt am Main.
+                  Standardprodukte direkt bestellen — individuelle Torten auf
+                  Anfrage.
                 </p>
               </div>
             </ScrollReveal>
 
             <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 lg:gap-x-12">
-              {SPECIALTIES.map((item, i) => (
-                <ScrollReveal key={item.name} delay={i * 100}>
-                  <div className="group">
-                    <div className="overflow-hidden">
-                      <PlaceholderFrame aspectRatio="4/5" />
-                    </div>
-                    <h3 className="mt-5 font-serif text-xl text-burgundy-700 lg:text-2xl">
-                      {item.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-burgundy-400">
-                      {item.description}
-                    </p>
-                  </div>
+              {PRODUCTS.map((product, i) => (
+                <ScrollReveal key={product.id} delay={i * 80}>
+                  <ProductCard product={product} />
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
+
+        <SectionDivider />
 
         {/* ── Über Sophie ── */}
         <section
@@ -221,7 +197,9 @@ export default function Home() {
         >
           <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal>
-              <PlaceholderFrame aspectRatio="3/4" label="Portrait" />
+              <ParallaxSection speed={0.08}>
+                <PlaceholderFrame aspectRatio="3/4" label="Portrait" />
+              </ParallaxSection>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
@@ -232,31 +210,28 @@ export default function Home() {
                 </h2>
                 <div className="mt-8 space-y-5 text-sm leading-relaxed text-burgundy-600 sm:text-base sm:leading-relaxed">
                   <p>
-                    Was als Sehnsucht nach den Aromen ihrer Kindheit begann,
-                    wurde zur Leidenschaft ihres Lebens. Sophie bringt die
-                    vergessenen Rezepte osteuropäischer Backstuben nach Frankfurt
-                    — neu interpretiert, mit besten Zutaten und dem Anspruch, den
-                    sie von ihrer Großmutter gelernt hat: Jedes Stück muss
-                    perfekt sein.
+                    Aufgewachsen zwischen den Backstuben Osteuropas und den
+                    Cafés Frankfurts. Sophie hat das Handwerk von ihrer
+                    Großmutter gelernt — die Ästhetik hat sie selbst
+                    mitgebracht.
                   </p>
                   <p>
-                    In ihrer Patisserie im Herzen Frankfurts verbindet sie
-                    slawische Backtradition mit zeitgenössischer Ästhetik. Jede
-                    Torte erzählt eine Geschichte. Jeder Bissen eine Reise.
+                    Sofié ist kein Kompromiss. Keine industriellen Zutaten,
+                    keine Abkürzungen. Jedes Stück wird so gefertigt, als wäre
+                    es das einzige.
                   </p>
-                </div>
-                <div className="mt-10">
-                  <Ornament variant="forest" />
                 </div>
               </div>
             </ScrollReveal>
           </div>
         </section>
 
+        <SectionDivider />
+
         {/* ── Philosophie ── */}
         <section
           id="philosophie"
-          className="scroll-mt-20 bg-burgundy-500 px-6 py-28 sm:py-36"
+          className="grain scroll-mt-20 bg-burgundy-500 px-6 py-28 sm:py-36"
         >
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
@@ -288,6 +263,54 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider variant="dark" />
+
+        {/* ── Lieferung ── */}
+        <section className="bg-cream-50 px-6 py-20 sm:py-28">
+          <div className="mx-auto max-w-3xl">
+            <ScrollReveal>
+              <div className="text-center">
+                <SectionTag>Lieferung</SectionTag>
+                <h2 className="mt-4 font-serif text-3xl text-burgundy-800 sm:text-4xl">
+                  Direkt zu Ihnen
+                </h2>
+                <p className="mx-auto mt-6 max-w-lg text-sm leading-relaxed text-burgundy-400">
+                  Wir liefern Ihre Bestellung frisch und sorgfältig verpackt.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="mt-12 grid gap-6 sm:grid-cols-2">
+                <div className="border border-cream-300 bg-white p-8 text-center">
+                  <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-forest-600">
+                    Frankfurt am Main
+                  </p>
+                  <p className="mt-3 font-serif text-2xl text-burgundy-700">
+                    Kostenlos ab 59 €
+                  </p>
+                  <p className="mt-2 text-xs text-burgundy-400">
+                    Lieferung am selben oder nächsten Tag
+                  </p>
+                </div>
+                <div className="border border-cream-300 bg-white p-8 text-center">
+                  <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-forest-600">
+                    Taunus & Umland
+                  </p>
+                  <p className="mt-3 font-serif text-2xl text-burgundy-700">
+                    Kostenlos ab 89 €
+                  </p>
+                  <p className="mt-2 text-xs text-burgundy-400">
+                    Bad Homburg · Kronberg · Königstein · Oberursel
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        <SectionDivider />
+
         {/* ── Kontakt ── */}
         <section
           id="kontakt"
@@ -296,9 +319,9 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <div className="text-center">
-                <SectionTag>Besuchen Sie uns</SectionTag>
+                <SectionTag>Kontakt</SectionTag>
                 <h2 className="mt-4 font-serif text-4xl text-burgundy-800 sm:text-5xl lg:text-6xl">
-                  Kontakt
+                  Schreiben Sie uns
                 </h2>
               </div>
             </ScrollReveal>
@@ -307,14 +330,12 @@ export default function Home() {
               <ScrollReveal>
                 <div>
                   <h3 className="font-serif text-xl text-burgundy-700">
-                    Adresse
+                    Standort
                   </h3>
                   <p className="mt-4 text-sm leading-relaxed text-burgundy-600">
                     Sofié Patisserie
                     <br />
                     Frankfurt am Main
-                    <br />
-                    Deutschland
                   </p>
 
                   <h3 className="mt-10 font-serif text-xl text-burgundy-700">
@@ -340,7 +361,7 @@ export default function Home() {
               <ScrollReveal delay={150}>
                 <div>
                   <h3 className="font-serif text-xl text-burgundy-700">
-                    Kontakt
+                    Anfragen & Bestellungen
                   </h3>
                   <div className="mt-4 space-y-4 text-sm text-burgundy-600">
                     <p>
@@ -360,12 +381,12 @@ export default function Home() {
                   </div>
 
                   <h3 className="mt-10 font-serif text-xl text-burgundy-700">
-                    Bestellungen
+                    Individuelle Torten
                   </h3>
                   <p className="mt-4 text-sm leading-relaxed text-burgundy-600">
-                    Individuelle Tortenbestellungen nehmen wir gerne per E-Mail
-                    oder Instagram entgegen. Bitte bestellen Sie mindestens 3
-                    Tage im Voraus.
+                    Festtagstorten werden individuell nach Ihren Wünschen
+                    gefertigt. Schreiben Sie uns per E-Mail oder Instagram —
+                    mindestens 5 Tage im Voraus.
                   </p>
                 </div>
               </ScrollReveal>

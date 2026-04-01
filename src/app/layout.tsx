@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
+import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
 const geist = Geist({
@@ -41,7 +42,10 @@ export default function RootLayout({
       lang="de"
       className={`${geist.variable} ${cormorant.variable} antialiased`}
     >
-      <body className="min-h-screen font-sans">{children}</body>
+      <body className="min-h-screen font-sans">
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }
