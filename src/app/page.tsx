@@ -210,15 +210,14 @@ export default function Home() {
                 </h2>
                 <div className="mt-6 space-y-4 text-sm leading-relaxed text-burgundy-600 sm:mt-8 sm:space-y-5 sm:text-base sm:leading-relaxed">
                   <p>
-                    Aufgewachsen zwischen den Backstuben Osteuropas und den
-                    Cafés Frankfurts. Sophie hat das Handwerk von ihrer
-                    Großmutter gelernt — die Ästhetik hat sie selbst
-                    mitgebracht.
+                    Großmutters Küche in Osteuropa. Dann Frankfurt. Sophie
+                    bäckt seit sie denken kann — erst für die Familie, jetzt
+                    für die Stadt.
                   </p>
                   <p>
-                    Sofié ist kein Kompromiss. Keine industriellen Zutaten,
-                    keine Abkürzungen. Jedes Stück wird so gefertigt, als wäre
-                    es das einzige.
+                    Butter aus der Normandie, nicht aus dem Großhandel.
+                    Vanille aus Madagaskar, keine Aromen. Wer einmal probiert
+                    hat, schmeckt den Unterschied.
                   </p>
                 </div>
               </div>
