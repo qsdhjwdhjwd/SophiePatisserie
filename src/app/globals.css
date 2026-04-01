@@ -139,6 +139,11 @@
   animation: marquee 35s linear infinite;
 }
 
+/* Pause marquee on hover for luxury feel */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 /* ── Grain / Noise Texture ── */
 
 .grain {
@@ -266,5 +271,12 @@
   }
   html {
     @apply scroll-smooth;
+  }
+
+  /* ── Focus States ── */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    @apply outline-2 outline-offset-2 outline-champagne;
   }
 }

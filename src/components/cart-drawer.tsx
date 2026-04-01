@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -18,12 +18,17 @@ export function CartDrawer({ open, onClose }: Props) {
   const updateQuantity = useCart((s) => s.updateQuantity);
   const totalPrice = useCart((s) => s.totalPrice);
   const [mounted, setMounted] = useState(false);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => setMounted(true), []);
 
+  // Body scroll lock
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      // Focus close button on open
+      setTimeout(() => closeRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = "";
     }
@@ -31,6 +36,37 @@ export function CartDrawer({ open, onClose }: Props) {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Escape key to close
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open, onClose]);
+
+  // Focus trap
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key !== "Tab" || !drawerRef.current) return;
+      const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+        'button, a, input, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    },
+    []
+  );
 
   if (!mounted) return null;
 
@@ -42,10 +78,16 @@ export function CartDrawer({ open, onClose }: Props) {
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Drawer */}
       <div
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Warenkorb"
+        onKeyDown={handleKeyDown}
         className={`fixed right-0 top-0 z-[70] flex h-full w-full flex-col bg-cream-50 shadow-2xl transition-transform duration-500 ease-out sm:max-w-md ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -54,6 +96,7 @@ export function CartDrawer({ open, onClose }: Props) {
         <div className="flex items-center justify-between border-b border-cream-300 px-4 py-4 sm:px-6 sm:py-5">
           <h2 className="font-serif text-lg text-burgundy-800 sm:text-xl">Warenkorb</h2>
           <button
+            ref={closeRef}
             onClick={onClose}
             className="flex size-11 items-center justify-center text-burgundy-400 transition-colors hover:text-burgundy-700 active:text-burgundy-700"
             aria-label="Warenkorb schließen"

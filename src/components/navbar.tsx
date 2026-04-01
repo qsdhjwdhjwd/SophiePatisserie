@@ -7,8 +7,8 @@ import { CartDrawer } from "@/components/cart-drawer";
 
 const NAV_LINKS = [
   { href: "#spezialitaeten", label: "Spezialitäten" },
+  { href: "#zutaten", label: "Zutaten" },
   { href: "#ueber", label: "Über Sophie" },
-  { href: "#philosophie", label: "Philosophie" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

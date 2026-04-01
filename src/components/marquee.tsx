@@ -16,7 +16,7 @@ export function Marquee({
 
   return (
     <div
-      className={`overflow-hidden whitespace-nowrap ${className}`}
+      className={`marquee-container overflow-hidden whitespace-nowrap ${className}`}
       aria-hidden="true"
     >
       <div className="inline-flex">
