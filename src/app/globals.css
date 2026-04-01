@@ -197,7 +197,7 @@
   }
 }
 
-/* ── Product Card Hover ── */
+/* ── Product Card Hover / Active ── */
 
 .product-card-image {
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -205,6 +205,45 @@
 
 .group:hover .product-card-image {
   transform: scale(1.05);
+}
+
+/* Mobile: active state for touch feedback */
+@media (pointer: coarse) {
+  .group:active .product-card-image {
+    transform: scale(1.03);
+  }
+}
+
+/* ── Reduced Motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
+
+  .product-card-image {
+    transition: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ── Touch Optimizations ── */
+
+@media (pointer: coarse) {
+  .grain::before {
+    background-size: 256px 256px;
+    opacity: 0.025;
+  }
 }
 
 /* ── Scrollbar Hide ── */

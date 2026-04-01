@@ -30,18 +30,18 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-cream-50/95 shadow-[0_1px_0_0_rgba(235,217,197,0.4)] backdrop-blur-md"
-            : "bg-transparent"
-        }`}
-      >
-        <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+        <nav
+          className={`mx-auto flex max-w-6xl items-center justify-between transition-all duration-700 ease-out ${
+            scrolled
+              ? "rounded-full border border-cream-300/60 bg-cream-50/90 px-4 py-2.5 shadow-[0_8px_32px_rgba(46,16,14,0.08)] backdrop-blur-xl sm:px-6 sm:py-3"
+              : "px-3 py-3 sm:px-6 sm:py-4"
+          }`}
+        >
           {/* Logo */}
           <a
             href="#"
-            className={`font-serif text-2xl italic tracking-wide transition-colors duration-500 ${
+            className={`font-serif text-xl italic tracking-wide transition-colors duration-500 sm:text-2xl ${
               scrolled ? "text-burgundy-500" : "text-cream-200"
             }`}
           >
@@ -50,7 +50,7 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <ul
-            className={`hidden items-center gap-10 text-[11px] font-medium tracking-[0.25em] uppercase transition-colors duration-500 md:flex ${
+            className={`hidden items-center gap-8 text-[10px] font-medium tracking-[0.25em] uppercase transition-colors duration-500 md:flex lg:gap-10 ${
               scrolled ? "text-burgundy-700" : "text-cream-200/80"
             }`}
           >
@@ -58,7 +58,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="transition-opacity duration-300 hover:opacity-60"
+                  className="py-2 transition-opacity duration-300 hover:opacity-60 active:opacity-60"
                 >
                   {link.label}
                 </a>
@@ -67,18 +67,20 @@ export function Navbar() {
           </ul>
 
           {/* Right side: Cart + Mobile toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-0.5 sm:gap-2">
             {/* Cart icon */}
             <button
               onClick={() => setCartOpen(true)}
-              className={`relative transition-colors duration-500 ${
-                scrolled ? "text-burgundy-500" : "text-cream-200"
+              className={`relative flex size-10 items-center justify-center rounded-full transition-all duration-500 sm:size-11 ${
+                scrolled
+                  ? "text-burgundy-500 hover:bg-cream-200/60"
+                  : "text-cream-200 hover:bg-cream-200/10"
               }`}
               aria-label="Warenkorb"
             >
-              <ShoppingBag className="size-5" />
+              <ShoppingBag className="size-[18px] sm:size-5" />
               {itemCount > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex size-4 items-center justify-center rounded-full bg-champagne text-[9px] font-bold text-burgundy-900">
+                <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-champagne text-[9px] font-bold text-burgundy-900">
                   {itemCount}
                 </span>
               )}
@@ -87,13 +89,15 @@ export function Navbar() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`transition-colors duration-500 md:hidden ${
-                scrolled ? "text-burgundy-500" : "text-cream-200"
+              className={`flex size-10 items-center justify-center rounded-full transition-all duration-500 md:hidden sm:size-11 ${
+                scrolled
+                  ? "text-burgundy-500 hover:bg-cream-200/60"
+                  : "text-cream-200 hover:bg-cream-200/10"
               }`}
               aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
             >
               <svg
-                className="size-6"
+                className="size-5 sm:size-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -111,14 +115,20 @@ export function Navbar() {
 
         {/* Mobile menu */}
         <div
-          className={`overflow-hidden transition-all duration-300 md:hidden ${
-            menuOpen ? "max-h-80" : "max-h-0"
+          className={`mx-auto mt-2 max-w-6xl overflow-hidden transition-all duration-500 ease-out md:hidden ${
+            menuOpen
+              ? "max-h-80 opacity-100"
+              : "max-h-0 opacity-0"
           }`}
         >
-          <ul className="flex flex-col items-center gap-6 border-t border-burgundy-100/20 bg-cream-50/98 py-8 text-[11px] font-medium tracking-[0.25em] uppercase text-burgundy-700 backdrop-blur-md">
+          <ul className="flex flex-col items-center gap-0.5 rounded-2xl border border-cream-300/60 bg-cream-50/95 py-3 text-[11px] font-medium tracking-[0.25em] uppercase text-burgundy-700 shadow-[0_8px_32px_rgba(46,16,14,0.08)] backdrop-blur-xl">
             {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} onClick={() => setMenuOpen(false)}>
+              <li key={link.href} className="w-full">
+                <a
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block w-full px-6 py-3.5 text-center transition-colors active:text-burgundy-400"
+                >
                   {link.label}
                 </a>
               </li>

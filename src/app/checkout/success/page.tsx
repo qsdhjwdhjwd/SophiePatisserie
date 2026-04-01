@@ -25,11 +25,11 @@ export default async function SuccessPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-cream-50 px-6">
+    <div className="flex min-h-svh flex-col items-center justify-center bg-cream-50 px-4 sm:px-6">
       <div className="max-w-md text-center">
-        <div className="mx-auto mb-8 flex size-16 items-center justify-center rounded-full bg-forest-100">
+        <div className="mx-auto mb-6 flex size-14 items-center justify-center rounded-full bg-forest-100 sm:mb-8 sm:size-16">
           <svg
-            className="size-8 text-forest-600"
+            className="size-7 text-forest-600 sm:size-8"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -42,14 +42,14 @@ export default async function SuccessPage({ searchParams }: Props) {
             />
           </svg>
         </div>
-        <h1 className="font-serif text-4xl text-burgundy-800">Vielen Dank!</h1>
-        <p className="mt-4 text-sm leading-relaxed text-burgundy-600">
+        <h1 className="font-serif text-3xl text-burgundy-800 sm:text-4xl">Vielen Dank!</h1>
+        <p className="mt-3 text-sm leading-relaxed text-burgundy-600 sm:mt-4">
           Ihre Bestellung wurde erfolgreich aufgegeben. Sie erhalten in Kürze
           eine Bestätigung per E-Mail.
         </p>
         <Link
           href="/"
-          className="mt-8 inline-block text-sm font-medium uppercase tracking-wider text-burgundy-500 underline underline-offset-4 transition-colors hover:text-burgundy-700"
+          className="mt-6 inline-flex min-h-[44px] items-center text-sm font-medium uppercase tracking-wider text-burgundy-500 underline underline-offset-4 transition-colors hover:text-burgundy-700 active:text-burgundy-700 sm:mt-8"
         >
           Zurück zur Startseite
         </Link>

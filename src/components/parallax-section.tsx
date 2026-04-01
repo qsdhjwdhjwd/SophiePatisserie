@@ -19,6 +19,8 @@ export function ParallaxSection({
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Disable parallax on mobile for performance
+    if (window.innerWidth < 768) return;
 
     let ticking = false;
     const onScroll = () => {

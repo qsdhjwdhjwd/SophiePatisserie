@@ -46,16 +46,16 @@ export function CartDrawer({ open, onClose }: Props) {
 
       {/* Drawer */}
       <div
-        className={`fixed right-0 top-0 z-[70] flex h-full w-full max-w-md flex-col bg-cream-50 shadow-2xl transition-transform duration-500 ease-out ${
+        className={`fixed right-0 top-0 z-[70] flex h-full w-full flex-col bg-cream-50 shadow-2xl transition-transform duration-500 ease-out sm:max-w-md ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-cream-300 px-6 py-5">
-          <h2 className="font-serif text-xl text-burgundy-800">Warenkorb</h2>
+        <div className="flex items-center justify-between border-b border-cream-300 px-4 py-4 sm:px-6 sm:py-5">
+          <h2 className="font-serif text-lg text-burgundy-800 sm:text-xl">Warenkorb</h2>
           <button
             onClick={onClose}
-            className="text-burgundy-400 transition-colors hover:text-burgundy-700"
+            className="flex size-11 items-center justify-center text-burgundy-400 transition-colors hover:text-burgundy-700 active:text-burgundy-700"
             aria-label="Warenkorb schließen"
           >
             <X className="size-5" />
@@ -63,7 +63,7 @@ export function CartDrawer({ open, onClose }: Props) {
         </div>
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto px-6 py-6">
+        <div className="flex-1 overflow-y-auto px-4 py-5 sm:px-6 sm:py-6">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center pt-20">
               <p className="text-sm text-burgundy-400">
@@ -71,20 +71,20 @@ export function CartDrawer({ open, onClose }: Props) {
               </p>
               <button
                 onClick={onClose}
-                className="mt-4 text-xs tracking-wider uppercase text-burgundy-500 underline underline-offset-4"
+                className="mt-4 min-h-[44px] text-xs tracking-wider uppercase text-burgundy-500 underline underline-offset-4"
               >
                 Weiter stöbern
               </button>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               {items.map((item) => (
                 <div
                   key={`${item.productId}-${item.sizeId}`}
-                  className="flex gap-4 border-b border-cream-200 pb-6"
+                  className="flex gap-3 border-b border-cream-200 pb-5 sm:gap-4 sm:pb-6"
                 >
-                  <div className="flex-1">
-                    <p className="font-serif text-burgundy-700">{item.name}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-serif text-burgundy-700 truncate">{item.name}</p>
                     {item.sizeName && (
                       <p className="mt-0.5 text-[11px] tracking-wider uppercase text-burgundy-400">
                         {item.sizeName}
@@ -94,7 +94,7 @@ export function CartDrawer({ open, onClose }: Props) {
                       {formatPrice(item.priceInCents)}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
                     <button
                       onClick={() =>
                         updateQuantity(
@@ -103,10 +103,10 @@ export function CartDrawer({ open, onClose }: Props) {
                           item.quantity - 1
                         )
                       }
-                      className="flex size-7 items-center justify-center border border-cream-300 text-burgundy-500 transition-colors hover:bg-cream-200"
+                      className="flex size-10 items-center justify-center border border-cream-300 text-burgundy-500 transition-colors hover:bg-cream-200 active:bg-cream-200 sm:size-9"
                       aria-label="Menge reduzieren"
                     >
-                      <Minus className="size-3" />
+                      <Minus className="size-3.5 sm:size-3" />
                     </button>
                     <span className="w-6 text-center text-sm text-burgundy-700">
                       {item.quantity}
@@ -119,17 +119,17 @@ export function CartDrawer({ open, onClose }: Props) {
                           item.quantity + 1
                         )
                       }
-                      className="flex size-7 items-center justify-center border border-cream-300 text-burgundy-500 transition-colors hover:bg-cream-200"
+                      className="flex size-10 items-center justify-center border border-cream-300 text-burgundy-500 transition-colors hover:bg-cream-200 active:bg-cream-200 sm:size-9"
                       aria-label="Menge erhöhen"
                     >
-                      <Plus className="size-3" />
+                      <Plus className="size-3.5 sm:size-3" />
                     </button>
                     <button
                       onClick={() => removeItem(item.productId, item.sizeId)}
-                      className="ml-1 flex size-7 items-center justify-center text-burgundy-300 transition-colors hover:text-burgundy-600"
+                      className="ml-0.5 flex size-10 items-center justify-center text-burgundy-300 transition-colors hover:text-burgundy-600 active:text-burgundy-600 sm:ml-1 sm:size-9"
                       aria-label="Entfernen"
                     >
-                      <Trash2 className="size-3.5" />
+                      <Trash2 className="size-4 sm:size-3.5" />
                     </button>
                   </div>
                 </div>
@@ -140,19 +140,19 @@ export function CartDrawer({ open, onClose }: Props) {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t border-cream-300 bg-cream-50 px-6 py-5">
-            <div className="mb-4 flex items-center justify-between">
+          <div className="border-t border-cream-300 bg-cream-50 px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-5">
+            <div className="mb-3 flex items-center justify-between sm:mb-4">
               <span className="text-[11px] uppercase tracking-[0.2em] text-burgundy-400">
                 Gesamt
               </span>
-              <span className="font-serif text-xl text-burgundy-800">
+              <span className="font-serif text-lg text-burgundy-800 sm:text-xl">
                 {formatPrice(totalPrice())}
               </span>
             </div>
             <Link
               href="/checkout"
               onClick={onClose}
-              className="flex h-9 w-full items-center justify-center rounded-lg bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
+              className="flex h-12 w-full items-center justify-center rounded-lg bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80 active:bg-primary/80 sm:h-11"
             >
               Zur Kasse
             </Link>

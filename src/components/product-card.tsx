@@ -35,7 +35,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="group">
-      {/* Image with hover overlay */}
+      {/* Image with hover/active overlay */}
       <div className="relative overflow-hidden">
         <div
           className="flex items-center justify-center border border-cream-300 bg-cream-100 product-card-image"
@@ -43,7 +43,7 @@ export function ProductCard({ product }: { product: Product }) {
         >
           <div className="flex flex-col items-center gap-3 text-cream-400">
             <svg
-              className="size-8"
+              className="size-6 sm:size-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -54,14 +54,14 @@ export function ProductCard({ product }: { product: Product }) {
                 d="M12 5v14M5 12h14"
               />
             </svg>
-            <span className="text-[10px] tracking-[0.2em] uppercase">
+            <span className="text-[9px] tracking-[0.2em] uppercase sm:text-[10px]">
               {product.name}
             </span>
           </div>
         </div>
 
         {product.type === "standard" && (
-          <div className="absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100">
             <span className="text-[10px] tracking-[0.3em] uppercase text-cream-200">
               In den Warenkorb
             </span>
@@ -69,7 +69,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
 
         {product.type === "inquiry" && (
-          <div className="absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-burgundy-900/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100">
             <span className="text-[10px] tracking-[0.3em] uppercase text-cream-200">
               Anfragen
             </span>
@@ -78,26 +78,26 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Product info */}
-      <h3 className="mt-5 font-serif text-xl text-burgundy-700 lg:text-2xl">
+      <h3 className="mt-4 font-serif text-lg text-burgundy-700 sm:mt-5 sm:text-xl lg:text-2xl">
         {product.name}
       </h3>
-      <p className="mt-1.5 text-sm leading-relaxed text-burgundy-400">
+      <p className="mt-1 text-sm leading-relaxed text-burgundy-400 sm:mt-1.5">
         {product.tagline}
       </p>
-      <p className="mt-3 text-xs leading-relaxed text-burgundy-300">
+      <p className="mt-2 text-xs leading-relaxed text-burgundy-300 sm:mt-3">
         {product.description}
       </p>
 
       {/* Price and actions */}
-      <div className="mt-5">
+      <div className="mt-4 sm:mt-5">
         {product.type === "inquiry" ? (
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             <span className="text-sm font-medium tracking-wide text-forest-600 italic">
               Auf Anfrage
             </span>
             <a
               href="#kontakt"
-              className="inline-flex h-7 items-center gap-2 rounded-lg border border-border bg-background px-2.5 text-[0.8rem] font-medium transition-colors hover:bg-muted"
+              className="inline-flex h-10 items-center gap-2 rounded-lg border border-border bg-background px-3 text-[0.8rem] font-medium transition-colors hover:bg-muted active:bg-muted sm:h-9 sm:px-2.5"
             >
               Anfragen
               <ArrowRight className="size-3" />
@@ -107,15 +107,15 @@ export function ProductCard({ product }: { product: Product }) {
           <>
             {/* Size options */}
             {product.sizes && product.sizes.length > 1 && mounted && (
-              <div className="mb-4 flex flex-wrap gap-2">
+              <div className="mb-3 flex flex-wrap gap-1.5 sm:mb-4 sm:gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size.id}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-3 py-1.5 text-[11px] tracking-wider uppercase border transition-all duration-300 ${
+                    className={`min-h-[40px] px-3 py-2 text-[11px] tracking-wider uppercase border transition-all duration-300 sm:min-h-0 sm:py-1.5 ${
                       selectedSize?.id === size.id
                         ? "border-burgundy-500 bg-burgundy-500 text-cream-200"
-                        : "border-cream-300 text-burgundy-600 hover:border-burgundy-300"
+                        : "border-cream-300 text-burgundy-600 hover:border-burgundy-300 active:border-burgundy-300"
                     }`}
                   >
                     {size.label}
@@ -124,12 +124,12 @@ export function ProductCard({ product }: { product: Product }) {
               </div>
             )}
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-3">
               <span className="font-serif text-lg text-burgundy-700">
                 {currentPrice !== null ? formatPrice(currentPrice) : ""}
               </span>
               {mounted && (
-                <Button size="sm" onClick={handleAdd} className="gap-2">
+                <Button size="sm" onClick={handleAdd} className="h-10 gap-2 sm:h-9">
                   <ShoppingBag className="size-3.5" />
                   {added ? "Hinzugefügt \u2713" : "Hinzufügen"}
                 </Button>

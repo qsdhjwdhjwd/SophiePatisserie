@@ -19,8 +19,15 @@ export function TextReveal({
 }: Props) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReducedMotion(true);
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -37,6 +44,15 @@ export function TextReveal({
   }, [delay]);
 
   const units = splitBy === "word" ? text.split(" ") : text.split("");
+
+  if (reducedMotion) {
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <Tag ref={ref as any} className={className}>
+        {text}
+      </Tag>
+    );
+  }
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
