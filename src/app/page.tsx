@@ -91,7 +91,7 @@ export default function Home() {
 
       <main>
         {/* ── Hero ── */}
-        <section className="grain relative flex h-svh min-h-[600px] flex-col items-center justify-center bg-burgundy-500 px-4 pb-28 sm:px-6">
+        <section className="grain flex h-svh min-h-[600px] flex-col items-center justify-center bg-burgundy-500 px-4 sm:px-6">
           <div className="flex flex-col items-center">
             <TextReveal
               text="Sofié"
@@ -114,9 +114,9 @@ export default function Home() {
             Osteuropäische Patisserie-Kunst. Handgefertigt in Frankfurt.
           </p>
 
-          {/* Scroll indicator */}
+          {/* Scroll indicator — below subtitle, in flow */}
           <div
-            className="animate-fade-up absolute bottom-6 flex flex-col items-center gap-2 sm:bottom-10 sm:gap-3"
+            className="animate-fade-up mt-10 flex flex-col items-center gap-2 sm:mt-14 sm:gap-3"
             style={{ animationDelay: "1.6s" }}
           >
             <span className="text-[9px] tracking-[0.35em] uppercase text-cream-200/25">
