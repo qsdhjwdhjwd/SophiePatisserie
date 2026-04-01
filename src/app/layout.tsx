@@ -1,26 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geist = Geist({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Sofie Patisserie Frankfurt",
-  description: "Handcrafted Eastern European pastries & artisan baked goods in Frankfurt am Main",
+  title: "Sofié Patisserie Frankfurt",
+  description:
+    "Handgefertigte osteuropäische Patisserie in Frankfurt am Main. Torten, Sirniki, Medovik und mehr.",
   metadataBase: new URL("https://sofiepatisserie.com"),
   openGraph: {
-    title: "Sofie Patisserie Frankfurt",
-    description: "Handcrafted Eastern European pastries & artisan baked goods in Frankfurt am Main",
+    title: "Sofié Patisserie Frankfurt",
+    description:
+      "Handgefertigte osteuropäische Patisserie in Frankfurt am Main",
     url: "https://sofiepatisserie.com",
-    siteName: "Sofie Patisserie",
+    siteName: "Sofié Patisserie",
     locale: "de_DE",
     type: "website",
   },
@@ -33,10 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="de"
+      className={`${geist.variable} ${cormorant.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen font-sans">{children}</body>
     </html>
   );
 }

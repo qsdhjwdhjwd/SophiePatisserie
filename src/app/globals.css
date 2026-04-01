@@ -9,7 +9,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-serif: var(--font-cormorant);
+  --font-heading: var(--font-cormorant);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,75 +47,93 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ── Brand: Burgundy (from logo) ── */
+  --color-burgundy-50: #F9F0EE;
+  --color-burgundy-100: #EEDCD9;
+  --color-burgundy-200: #D4A19B;
+  --color-burgundy-300: #B87068;
+  --color-burgundy-400: #9B4A42;
+  --color-burgundy-500: #7B2D26;
+  --color-burgundy-600: #6B2520;
+  --color-burgundy-700: #5C201B;
+  --color-burgundy-800: #4A1A16;
+  --color-burgundy-900: #2E100E;
+
+  /* ── Brand: Cream (from logo text) ── */
+  --color-cream-50: #FFFCF9;
+  --color-cream-100: #FDF8F3;
+  --color-cream-200: #F5EBDD;
+  --color-cream-300: #EBD9C5;
+  --color-cream-400: #D4BFA3;
+
+  /* ── Brand: Forest / Old Money Green ── */
+  --color-forest-50: #F0F8F4;
+  --color-forest-100: #DFF0E9;
+  --color-forest-200: #B5D4C8;
+  --color-forest-300: #85B3A1;
+  --color-forest-400: #5A8B79;
+  --color-forest-500: #3B6355;
+  --color-forest-600: #2D4A3E;
+  --color-forest-700: #1E332B;
+  --color-forest-800: #142320;
+  --color-forest-900: #0F1C17;
+
+  /* ── Brand: Champagne / Gold accent ── */
+  --color-champagne: #C4A87C;
+  --color-champagne-light: #D4C09A;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #FFFCF9;
+  --foreground: #2E100E;
+  --card: #FDF8F3;
+  --card-foreground: #2E100E;
+  --popover: #FDF8F3;
+  --popover-foreground: #2E100E;
+  --primary: #7B2D26;
+  --primary-foreground: #F5EBDD;
+  --secondary: #FDF8F3;
+  --secondary-foreground: #5C201B;
+  --muted: #F5EBDD;
+  --muted-foreground: #9B4A42;
+  --accent: #2D4A3E;
+  --accent-foreground: #FFFCF9;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: #EBD9C5;
+  --input: #EBD9C5;
+  --ring: #B87068;
+  --chart-1: #7B2D26;
+  --chart-2: #2D4A3E;
+  --chart-3: #C4A87C;
+  --chart-4: #B87068;
+  --chart-5: #5A8B79;
+  --radius: 0.5rem;
+  --sidebar: #FDF8F3;
+  --sidebar-foreground: #2E100E;
+  --sidebar-primary: #7B2D26;
+  --sidebar-primary-foreground: #F5EBDD;
+  --sidebar-accent: #F5EBDD;
+  --sidebar-accent-foreground: #5C201B;
+  --sidebar-border: #EBD9C5;
+  --sidebar-ring: #B87068;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* ── Hero entrance animation ── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @layer base {
@@ -125,6 +144,6 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth;
   }
 }
